@@ -37,7 +37,7 @@
 
 - **JoyAI-VL-Interaction**: *JoyAI-VL-Interaction: Real-Time Vision-Language Interaction Intelligence*. *JD.com Tech Report, Jun 2026*.
   - **Authors/Institution**: Dingyu Yao, Junhao Zhou, Chenxu Yang et al. (JD.com)
-  - **Core Contribution**: Real-time streaming VLM with AdaCodec long-horizon memory compression and GRPO-trained proactive response mechanism. Supports interactive AI companion scenarios: commentating, guidance, multi-speaker coordination.
+  - **Core Contribution**: Real-time streaming VLM with a predictive video codec (AdaCodec) that spends only a few tokens on predictable frames to keep token growth sub-linear, plus a pluggable long-horizon memory for cross-hour context. Proactive (vision-triggered) responses are learned from 4M+ second-aligned clips and refined with reinforcement learning. Supports AI-companion scenarios: live commentary, guidance, real-time translation, monitoring/alerting, and agent delegation.
   - **Links**: [[Project](https://joyai-vl-video-future-academy-jd.github.io/JoyAI-VL-Interaction/)] | [[Code](https://github.com/jd-opensource/JoyAI-VL-Interaction)]
 
 - **StreamReady**: *StreamReady: Learning What to Answer and When in Long Streaming Videos*. *CVPR, 2026*.
@@ -56,13 +56,13 @@
   - **Links**: [[Paper](https://arxiv.org/abs/2603.12265)]
 
 - **FluxMem**: *FluxMem: Adaptive Hierarchical Memory for Streaming Video Understanding*. *CVPR, 2026*.
-  - **Authors/Institution**: Yiweng Xie, Bo He, Junke Wang et al. (Fudan University)
-  - **Core Contribution**: Adaptive hierarchical memory bank with dynamic retention/eviction policy for training-free token compression in streaming video. Maintains long-term context under constant memory budget via query-guided memory refresh.
+  - **Authors/Institution**: Yiweng Xie, Bo He, Junke Wang et al. (Fudan University; University of Maryland)
+  - **Core Contribution**: Training-free adaptive hierarchical memory for streaming video: a short/mid/long-term memory bank with dynamic retention/eviction (capacity-driven overflow) and self-adaptive token compression via two lightweight modules — TAS (Temporal Adjacency Selection) and SDC (Spatial Domain Consolidation) — with Otsu-based data-driven thresholds. Keeps long-term context under a constant memory budget.
   - **Links**: [[Paper](https://arxiv.org/abs/2603.02096)]
 
 - **HERMES**: *HERMES: KV Cache as Hierarchical Memory for Efficient Streaming Video Understanding*. *ACL, 2026*.
-  - **Authors/Institution**: Haowei Zhang, Shudong Yang, Jinlan Fu et al. (Fudan University)
-  - **Core Contribution**: Training-free hierarchical KV-cache organization for streaming video — short-term, mid-term, and long-term memory tiers with query-aware retrieval. Enables efficient streaming without retraining or architectural changes.
+  - **Authors/Institution**: Haowei Zhang, Shudong Yang, Jinlan Fu et al. (Fudan University; National University of Singapore)
+  - **Core Contribution**: Training-free hierarchical KV-cache organization for streaming video — a short/mid/long-term memory framework spanning multiple granularities. At query time it reads the pre-built hierarchical KV cache directly with no auxiliary computation, enabling efficient streaming without retraining or architectural changes.
   - **Links**: [[Paper](https://arxiv.org/abs/2601.14724)]
 
 - **VideoScaffold**: *VideoScaffold: Elastic-Scale Visual Hierarchies for Streaming Video Understanding in MLLMs*. *arXiv, Dec 2025*.
@@ -178,8 +178,8 @@
   - **Links**: [[Paper](https://arxiv.org/abs/2512.01031)] | [[Code](https://github.com/mit-han-lab/vlash)]
 
 - **FiS-VLA**: *Fast-in-Slow: A Dual-System Foundation Model Unifying Fast Manipulation within Slow Reasoning*. *arXiv, Jun 2025*.
-  - **Authors/Institution**: Hao Chen, Jiaming Liu, Chenyang Gu et al. (CUHK, PKU, OPPO)
-  - **Core Contribution**: Dual-system VLA with shared Qwen2-VL backbone — fast path injects into slow path's last K=2 layers for streaming manipulation while maintaining slow reasoning capacity. Diffusion policy action head. Ablation shows K>2 provides diminishing returns.
+  - **Authors/Institution**: Hao Chen, Jiaming Liu, Chenyang Gu et al. (CUHK, Peking University, AI2Robotics, BAAI)
+  - **Core Contribution**: Dual-system VLA built on a Prismatic-VLM / LLaMA2-7B backbone — repurposes the slow reasoning model's last K=2 transformer blocks as a fast execution module (System 1) for streaming manipulation while retaining full System 2 reasoning. Action generation is formulated as diffusion denoising embedded in these shared blocks (no separate policy head). Ablation shows K>2 yields diminishing returns.
   - **Links**: [[Paper](https://arxiv.org/abs/2506.01953)] | [[Code](https://github.com/CHEN-H01/Fast-in-Slow)] | [[Project](https://fast-in-slow.github.io/)]
 
 
@@ -210,7 +210,7 @@
   - **Core Contribution**: First time-sensitive LLM serving system for robotic agents. Content-aware segmented generation (detects executable robot skills and pauses/resumes at semantic boundaries). Time Utility Function (TUF)-based scheduling with potential utility density prioritization. 1.97× time utility, 84% waiting time reduction; integrated with vLLM.
   - **Links**: [[Paper](https://arxiv.org/abs/2412.18695)]
 
-- **EAGLE / EAGLE-2**: *EAGLE: Speculative Sampling Requires Rethinking Feature Uncertainty* (+ *EAGLE-2: Faster and Better Speculative Sampling*). *ICML, 2024 / ACL, 2024*.
+- **EAGLE / EAGLE-2**: *EAGLE: Speculative Sampling Requires Rethinking Feature Uncertainty* (+ *EAGLE-2: Faster Inference of Language Models with Dynamic Draft Trees*). *ICML, 2024 / ACL, 2024*.
   - **Authors/Institution**: Yuhui Li, Fangyun Wei, Chao Zhang, Hongyang Zhang (PKU, Microsoft)
   - **Core Contribution**: Self-speculative decoding at feature level — trains draft head on target LLM's second-to-last hidden state for 2–3× acceleration. EAGLE-2 discovers draft softmax confidence ≈ acceptance rate (strong calibration), enabling adaptive draft length without extra training. Foundational infrastructure for VLA streaming acceleration.
   - **Links**: [[Paper (EAGLE)](https://arxiv.org/abs/2401.15077)] | [[Paper (EAGLE-2)](https://arxiv.org/abs/2406.16858)] | [[Code](https://github.com/SafeAILab/EAGLE)]
