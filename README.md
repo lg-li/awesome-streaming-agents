@@ -98,7 +98,7 @@
 - **VideoLLM-online**: *VideoLLM-online: Online Video Large Language Model for Streaming Video*. *CVPR, 2024*.
   - **Authors/Institution**: Joya Chen, Zhaoyang Lv, Shiwei Wu et al. (Show Lab, NUS; Meta Reality Labs)
   - **Core Contribution**: Pioneering streaming Video LLM with LIVE (Learning-In-Video-Stream) framework: temporally-aligned training objective, offline-to-streaming data synthesis via LLM prompting, and parallelized async inference pipeline. 10+ FPS on A100 for 5-min clips; SOTA on offline benchmarks.
-  - **Links**: [[Paper](https://arxiv.org/abs/2406.11838)] | [[Code](https://github.com/showlab/videollm-online)] | [[Project](https://showlab.github.io/videollm-online)]
+  - **Links**: [[Paper](https://arxiv.org/abs/2406.11816)] | [[Code](https://github.com/showlab/videollm-online)] | [[Project](https://showlab.github.io/videollm-online)]
 
 
 
