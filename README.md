@@ -75,6 +75,11 @@
   - **Core Contribution**: Unified framework aligning training (overlapped-chunk SFT) with streaming inference (compact KV-cache: attention sinks + rolling vision buffer + rolling text buffer + contiguous RoPE). 8 FPS on H100 for 2h+ videos. 66.18% win rate vs GPT-4o mini on Inf-Streams-Eval; also boosts offline VQA (+4.30 LongVideoBench).
   - **Links**: [[Paper](https://arxiv.org/abs/2510.09608)] | [[Code](https://github.com/mit-han-lab/streaming-vlm)] | [[Demo](https://streamingvlm.hanlab.ai)]
 
+- **JanusVLN**: *JanusVLN: Decoupling Semantics and Spatiality with Dual Implicit Memory for Vision-Language Navigation*. *ICLR, 2026*.
+  - **Authors/Institution**: Shuang Zeng, Dekang Qi, Xinyuan Chang, Feng Xiong, Shichao Xie, Xiaolong Wu, Shiyi Liang, Mu Xu, Xing Wei, Ning Guo (MIV, Xi'an Jiaotong University)
+  - **Core Contribution**: Streaming VLN agent over a continuous video stream with a dual implicit neural memory that decouples spatial-geometric and visual-semantic memory into separate, compact, fixed-size neural representations (inspired by left-brain semantics / right-brain spatiality). Extends the MLLM with a 3D prior from a spatial-geometric encoder for RGB-only 3D reasoning; builds dual implicit memory from historical KV caches, retaining only KVs of tokens in the initial + sliding window for efficient incremental updates. SOTA over 20+ methods on VLN-CE (e.g., R2R-CE).
+  - **Links**: [[Paper](https://arxiv.org/abs/2509.22548)] | [[Code](https://github.com/MIV-XJTU/JanusVLN)] | [[Project](https://miv-xjtu.github.io/JanusVLN.github.io/)]
+
 - **InfiniPot-V**: *InfiniPot-V: Memory-Constrained KV Cache Compression for Streaming Video Understanding*. *NeurIPS, 2025*.
   - **Authors/Institution**: Minsoo Kim, Kyuhong Shim, Jungwook Choi, Simyung Chang et al.
   - **Core Contribution**: First training-free, query-agnostic KV-cache compression with hard length-independent memory cap. Temporal-axis Redundancy (TaR) removal + Value-Norm (VaN) ranking. Cuts peak GPU memory by up to 94% across four MLLMs; sustains real-time generation in multi-turn dialogues.
@@ -151,6 +156,11 @@
   - **Authors/Institution**: Tianyi Yan, Huan Zheng, Dubing Chen et al.
   - **Core Contribution**: Real-time causal driving WAM at 12 FPS — Context-Forced DMD over causal AR Flow-Matching, strictly avoids future-layout leakage. Enables closed-loop RL post-training via Video2Reward and human-in-the-loop simulation. SocioDrive-Bench for causal driving sociology.
   - **Links**: [[Paper](https://arxiv.org/abs/2606.15341)]
+
+- **AutoMoT**: *AutoMoT: A Unified Vision-Language-Action Model with Asynchronous Mixture-of-Transformers for End-to-End Autonomous Driving*. *ICML, 2026*.
+  - **Authors/Institution**: Wenhui Huang, Songyan Zhang, Qihang Huang, Zhidong Wang, Zhiqi Mao, Collister Chua, Zhan Chen, Long Chen, Chen Lv (Xiaomi Auto / Xiaomi EV; NTU AutoMan Lab; Harvard)
+  - **Core Contribution**: End-to-end autonomous-driving VLA unifying reasoning and action in a single model via a Mixture-of-Transformers (MoT) architecture with layer-wise joint attention sharing — a slow Understanding Expert (4B Qwen3-VL) feeds high-level scene understanding directly into a fast Action Expert (~1.6B) through shared attention, enabling fast-slow inference via asynchronous execution at different task frequencies. Bench2Drive 87.34 DS / 70.00% SR; nuScenes open-loop SOTA. Checkpoints, code, and NuSync data released.
+  - **Links**: [[Paper](https://arxiv.org/abs/2603.14851)] | [[Code](https://github.com/OscarHuangWind/AutoMoT)] | [[Project](https://automot-website.github.io/)]
 
 - **GigaWorld-Policy**: *GigaWorld-Policy: An Efficient Action-Centered World–Action Model*. *arXiv, Mar 2026*.
   - **Authors/Institution**: Angen Ye, Boyuan Wang, Chaojun Ni et al. (GigaAI)
